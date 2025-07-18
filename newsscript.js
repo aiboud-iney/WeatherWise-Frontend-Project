@@ -54,8 +54,16 @@ function WeatherArticle(article) {
 
 
 fetch(url)
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
   .then(data => {
+    if (!data.articles || data.articles.length === 0) {
+      throw new Error('No articles found in response');
+    }
 
     // Filter weather articles
     const weatherArticles = data.articles.filter(WeatherArticle);
@@ -72,7 +80,7 @@ fetch(url)
     // 1. Main News : 
     const main = weatherArticles[0];
     document.getElementById('main-news-title').textContent = main.title || "";
-    document.getElementById('main-news-image').src = main.urlToImage || "";
+    document.getElementById('main-news-image').src = main.urlToImage || "assests/default-news.jpg";
     document.getElementById('main-news-image').alt = main.title || "Main News Image";
 
     const mainText = main.description || main.content || "No summary available.";
@@ -94,7 +102,7 @@ fetch(url)
       const div = document.createElement('div');
       div.className = "side-news-card";
       div.innerHTML = `
-        <img src="${article.urlToImage || ''}" alt="${article.title || 'News Image'}" class="side-news-img">
+        <img src="${article.urlToImage || 'assests/default-news.jpg'}" alt="${article.title || 'News Image'}" class="side-news-img">
         <h4><a href="${article.url}" target="_blank">${article.title}</a></h4>
         <p>${truncateText(article.description || article.content || "", 80)}</p>
       `;
@@ -110,7 +118,7 @@ fetch(url)
       const div = document.createElement('div');
       div.className = "breaking-news-card";
       div.innerHTML = `
-        <img src="${article.urlToImage || ''}" alt="${article.title || 'News Image'}" class="breaking-news-img">
+        <img src="${article.urlToImage || 'assests/default-news.jpg'}" alt="${article.title || 'News Image'}" class="breaking-news-img">
         <h5><a href="${article.url}" target="_blank">${article.title}</a></h5>
         <span>${formatDate(article.publishedAt)}</span>
       `;
@@ -165,6 +173,30 @@ fetch(url)
     }
   })
   .catch(error => {
-    document.getElementById('main-news-title').textContent = "Could not load news.";
     console.error("Error fetching news:", error);
+    
+    // Show user-friendly error message
+    document.getElementById('main-news-title').textContent = "Weather News";
+    document.getElementById('main-news-desc').textContent = "Stay informed with the latest weather forecasts, storm warnings, and climate news. Our team is constantly monitoring weather patterns to bring you the most accurate and up-to-date information.";
+    document.getElementById('main-news-date').textContent = formatDate(new Date());
+    document.getElementById('main-news-image').src = "assests/default-news.jpg";
+    
+    // Show fallback content for side news
+    const sideNewsList = document.getElementById('side-news-list');
+    if (sideNewsList) {
+      sideNewsList.innerHTML = `
+        <div class='side-news-card'>
+          <h4><a href="#" target="_blank">Weather Alert System</a></h4>
+          <p>Real-time weather alerts and emergency notifications for your area.</p>
+        </div>
+        <div class='side-news-card'>
+          <h4><a href="#" target="_blank">Climate Change Updates</a></h4>
+          <p>Latest research and developments in climate science and environmental protection.</p>
+        </div>
+        <div class='side-news-card'>
+          <h4><a href="#" target="_blank">Storm Tracking</a></h4>
+          <p>Advanced storm tracking and hurricane monitoring systems.</p>
+        </div>
+      `;
+    }
   });
