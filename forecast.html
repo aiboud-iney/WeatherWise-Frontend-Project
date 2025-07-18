@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherWise</title>
+    <link rel="icon" href="assests\logo2.svg">
+    <link rel="stylesheet" href="forecast.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <nav>
+        <div>
+            <img src="assests\logo.svg" alt="WeatherWise Logo" class="logo">
+        </div>
+
+        <div>
+            <ul class="menu">
+              <li><a href="home.html" class="menuchoice">Home</a></li>
+              <li><a href="news.html" class="menuchoice">News</a></li>
+              <li><a href="forecast.html" class="menuchoice active">Weather Forecast</a></li>
+              <li><a href="contact.html" class="menuchoice">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+<div class="forecast-header">
+    <div class="header-left">
+      <h1>Weather Forecast</h1>
+      <p class="current-date" id="current-date">Friday 26, September 2024</p>
+    </div>
+
+    <div class="search-container">
+      <div class="search-bar">
+        <img src="assests/search.png" alt="Search" class="search-icon">
+        <input type="text" id="city-input" placeholder="New York">
+      </div>
+    </div>
+
+</div>
+
+<div class="weather-main-card" id="weather-main-card">
+    <div class="weather-bg" id="weather-bg">
+
+      <!-- Left Section: City, Country, Temperature -->
+      <div class="weather-left">
+        <div class="city-info">
+          <h2 id="city-name">New York</h2>
+          <span id="country-name">United States</span>
+        </div>
+        <div class="current-temp" id="current-temp">28°</div>
+      </div>
+      
+      <!-- Right Section: Weather Icon, Description, Details -->
+      <div class="weather-right">
+        <div class="weather-icon-section">
+          <img src="assests/moon-icon.png" alt="Clear sky" id="weather-icon-img" class="weather-icon-img">
+          <span id="weather-description">Clear sky</span>
+        </div>
+        
+        <div class="weather-details-list">
+          <div class="detail-item">
+            <img src="assests/up.png" alt="High" class="detail-icon-img">
+            <span id="temp-high">32°</span>
+          </div>
+          <div class="detail-item">
+            <img src="assests/down.png" alt="Low" class="detail-icon-img">
+            <span id="temp-low">21°</span>
+          </div>
+          <div class="detail-item">
+            <img src="assests/wind_icon.png" alt="Wind" class="detail-icon-img">
+            <span id="wind-speed">17km/h</span>
+          </div>
+          <div class="detail-item">
+            <img src="assests/droplet.png" alt="Humidity" class="detail-icon-img">
+            <span id="humidity">67%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Today's Highlight Section -->
+<section class="today-highlight">
+  <h3 class="highlight-title">Today's highlight</h3>
+  <div class="highlight-cards">
+    <div class="highlight-card">
+      <div class="highlight-date" id="highlight-date">Saturday 27th 2024</div>
+      <div class="highlight-temps">
+        <div class="temp-item">
+          <img src="assests/up-colour.png" alt="High" class="temp-icon">
+          <span id="highlight-high">21°</span>
+        </div>
+        <div class="temp-item">
+          <img src="assests/down-colour.png" alt="Low" class="temp-icon">
+          <span id="highlight-low">34°</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="highlight-card">
+      <div class="highlight-label">Temp. variation</div>
+      <div class="temp-variation">
+        <img src="assests\thermometer.png" alt="Variation" class="variation-icon">
+        <span id="temp-variation">11°</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5-Day Forecast Section -->
+<section class="forecast-section">
+  <div class="forecast-tabs">
+    <button class="tab-btn active" data-tab="today">Today</button>
+    <button class="tab-btn" data-tab="week">Week</button>
+  </div>
+  
+  <div class="forecast-cards-grid">
+    <div class="forecast-card">
+      <div class="card-header">
+        <div class="card-date-time">Saturday 27th 2024, 12:00:00</div>
+        <div class="card-weather-condition">Sunny</div>
+      </div>
+      <div class="card-content">
+        <div class="card-left">
+          <div class="card-info-item">
+            <img src="assests/thermometer.png" alt="Temperature" class="card-icon">
+            <span class="card-value">28°</span>
+          </div>
+          <div class="card-info-item">
+            <img src="assests/droplet-blue.png" alt="Humidity" class="card-icon">
+            <span class="card-value">45%</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <img src="assests/sunny-colour.png" alt="Weather" class="card-weather-icon">
+        </div>
+      </div>
+    </div>
+    <div class="forecast-card">
+      <div class="card-header">
+        <div class="card-date-time">Saturday 27th 2024, 12:00:00</div>
+        <div class="card-weather-condition">Sunny</div>
+      </div>
+      <div class="card-content">
+        <div class="card-left">
+          <div class="card-info-item">
+            <img src="assests/thermometer.png" alt="Temperature" class="card-icon">
+            <span class="card-value">28°</span>
+          </div>
+          <div class="card-info-item">
+            <img src="assests/droplet-blue.png" alt="Humidity" class="card-icon">
+            <span class="card-value">45%</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <img src="assests/sunny-colour.png" alt="Weather" class="card-weather-icon">
+        </div>
+      </div>
+    </div>
+    
+    <div class="forecast-card">
+      <div class="card-header">
+        <div class="card-date-time">Saturday 27th 2024, 15:00:00</div>
+        <div class="card-weather-condition">Cloudy</div>
+      </div>
+      <div class="card-content">
+        <div class="card-left">
+          <div class="card-info-item">
+            <img src="assests/thermometer.png" alt="Temperature" class="card-icon">
+            <span class="card-value">25°</span>
+          </div>
+          <div class="card-info-item">
+            <img src="assests/droplet-blue.png" alt="Humidity" class="card-icon">
+            <span class="card-value">78%</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <img src="assests/clouds-colour.png" alt="Weather" class="card-weather-icon">
+        </div>
+      </div>
+    </div>
+    
+    <div class="forecast-card">
+      <div class="card-header">
+        <div class="card-date-time">Saturday 27th 2024, 18:00:00</div>
+        <div class="card-weather-condition">Stormy</div>
+      </div>
+      <div class="card-content">
+        <div class="card-left">
+          <div class="card-info-item">
+            <img src="assests/thermometer.png" alt="Temperature" class="card-icon">
+            <span class="card-value">22°</span>
+          </div>
+          <div class="card-info-item">
+            <img src="assests/droplet-blue.png" alt="Humidity" class="card-icon">
+            <span class="card-value">85%</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <img src="assests/storm_colour.png" alt="Weather" class="card-weather-icon">
+        </div>
+      </div>
+    </div>
+    
+    <div class="forecast-card">
+      <div class="card-header">
+        <div class="card-date-time">Saturday 27th 2024, 21:00:00</div>
+        <div class="card-weather-condition">Clear</div>
+      </div>
+      <div class="card-content">
+        <div class="card-left">
+          <div class="card-info-item">
+            <img src="assests/thermometer.png" alt="Temperature" class="card-icon">
+            <span class="card-value">30°</span>
+          </div>
+          <div class="card-info-item">
+            <img src="assests/droplet-blue.png" alt="Humidity" class="card-icon">
+            <span class="card-value">55%</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <img src="assests/sunny-colour.png" alt="Weather" class="card-weather-icon">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Breaking News Section -->
+<section class="breaking-news">
+  <h3 class="news-title">Breaking news</h3>
+  <div class="news-cards">
+    <div class="news-card">
+      <img src="" alt="News" class="news-image" id="news-img-1">
+      <div class="news-content">
+        <div class="news-meta">
+          <span class="news-date" id="news-date-1">26/06/2024</span>
+          <span class="news-source" id="news-source-1">BBC News</span>
+        </div>
+        <p class="news-snippet" id="news-snippet-1">Loading weather news...</p>
+        <div class="news-footer">
+          <span class="news-author" id="news-author-1">Loading...</span>
+          <a href="#" class="news-link" id="news-link-1" target="_blank">Access article</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="news-card">
+      <img src="" alt="News" class="news-image" id="news-img-2">
+      <div class="news-content">
+        <div class="news-meta">
+          <span class="news-date" id="news-date-2">26/06/2024</span>
+          <span class="news-source" id="news-source-2">BBC News</span>
+        </div>
+        <p class="news-snippet" id="news-snippet-2">Loading weather news...</p>
+        <div class="news-footer">
+          <span class="news-author" id="news-author-2">Loading...</span>
+          <a href="#" class="news-link" id="news-link-2" target="_blank">Access article</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="news-card">
+      <img src="" alt="News" class="news-image" id="news-img-3">
+      <div class="news-content">
+        <div class="news-meta">
+          <span class="news-date" id="news-date-3">26/06/2024</span>
+          <span class="news-source" id="news-source-3">BBC News</span>
+        </div>
+        <p class="news-snippet" id="news-snippet-3">Loading weather news...</p>
+        <div class="news-footer">
+          <span class="news-author" id="news-author-3">Loading...</span>
+          <a href="#" class="news-link" id="news-link-3" target="_blank">Access article</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="all-news-btn">All news</button>
+</section>
+
+
+<footer class="site-footer">
+        <div class="footer-content">
+          <img src="assests\logo2.svg" alt="Cloud Logo" class="footer-logo">
+          <div class="footer-icons">
+            <a href="https://www.linkedin.com/in/ichrak-aiboud" target="_blank">
+              <img src="assests\icon-logo.svg" alt="LinkedIn" class="footer-icon">
+            </a>
+            <a href="https://github.com/aiboud-iney" target="_blank">
+              <img src="assests/github.svg" alt="GitHub" class="footer-icon">
+            </a>
+          </div>
+          <div class="footer-credit">
+            Website developed by Aiboud Ichrak Nour El Yakine
+          </div>
+        </div>
+      </footer>
+
+<script src="forecast.js"></script>
+</body>
+
+</html>

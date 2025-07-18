@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - WeatherWise</title>
+    <link rel="icon" href="assests\logo2.svg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+    <nav>
+        <div>
+            <img src="assests\logo.svg" alt="WeatherWise Logo" class="logo">
+        </div>
+        <div>
+            <ul class="menu" id="main-menu">
+                <li><a href="home.html" class="menuchoice active">Home</a></li>
+                <li><a href="news.html" class="menuchoice">News</a></li>
+                <li><a href="forecast.html" class="menuchoice">Weather Forecast</a></li>
+                <li><a href="contact.html" class="menuchoice">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    
+
+<div class="main-content">
+    <section class="S1">
+
+        <div class="S1text">
+            <h1>WeatherWise</h1>
+            <br>
+            <p>
+                From Morning Skies to Midnight Storms, <br>
+                <b style="font-weight: 700;">WeatherWise</b> Keeps You One Step <br>
+                Ahead Anytime, Anywhere
+            </p>
+        </div>
+
+        <div class="S1-content">
+            <div class="news">
+                <div class="news-text">
+                    Stay prepared for every sunrise and storm with daily <span class="newsbold">weather news</span> updates
+                </div>
+                <a href="news.html" class="explore-btn">Explore</a>
+            </div>
+            <div class="Weather-Card">
+
+                <div class="weather-card-header">
+
+                    <!-- Location input-->
+                    <div class="location-selector">
+                      <input type="text" id="city-input" placeholder="Enter a city..." style="width:150px;">
+                      <div class="plusbutton" id="city-validate-btn">
+                        <img src="assests\search.png" alt="Plus Icon" class="header-icon">
+                      </div>
+                    </div>
+                    <span id="city-error" style="color:#d32f2f;font-size:13px;display:none;margin-left:8px;"></span>
+                    
+                </div>
+
+                <div class="weather-image">
+                    <img src="assests/nightweather.png" alt="Night Weather" class="weather-icon" id="main-weather-icon">
+                </div>
+
+                <div class="date-time">
+                    <div class="row">
+                        <div class="today">Today</div>
+                        <div class="time">20:00</div>
+                    </div>
+                    <div class="row">
+                        <div class="date">12 Jun, Friday</div>
+                        <div class="current-temp">24°</div>
+                    </div>
+
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <span class="weathericon">
+                                <img  src="assests/cloudy_1.svg" alt="weather Icon">
+                            </span>
+                            <span>Clean</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="weathericon">
+                                <img src="assests\wind.png" alt="Wind Icon">
+                            </span>
+                            <span>10.6 km/h</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <span class="weathericon">
+                                <img src="assests\cloud-rain.png" alt="Rain Icon">
+                            </span>
+                            <span>34%</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="forecast">
+                    <div class="forecast-item">
+                        <div class="forecast-time">Now</div>
+                        <div class="forecast-icon">
+                            <img src="assests\moonn.png" alt="Moon Icon">
+                        </div>
+                        <div class="forecast-temp">24°</div>
+                    </div>
+
+                    <div class="forecast-item">
+                        <div class="forecast-time">00:00</div>
+                        <div class="forecast-icon">
+                            <img src="assests\cloud-snow.png" alt="Cloud Moon Icon">
+                        </div>
+                        <div class="forecast-temp">19°</div>
+                    </div>
+
+                    <div class="forecast-item">
+                        <div class="forecast-time">05:00</div>
+                        <div class="forecast-icon">
+                            <img src="assests\cloud-snow.png" alt="Cloud Moon Icon">
+                        </div>
+                        <div class="forecast-temp">15°</div>
+                    </div>
+
+                    <div class="forecast-item">
+                        <div class="forecast-time">10:00</div>
+                        <div class="forecast-icon">
+                            <img src="assests\sun.png" alt="Cloud Moon Icon">
+                        </div>
+                        <div class="forecast-temp">25°</div>
+                    </div>
+
+                    <div class="forecast-item">
+                        <div class="forecast-time">15:00</div>
+                        <div class="forecast-icon">
+                            <img src="assests\sun.png" alt="Cloud Moon Icon">
+                        </div>
+                        <div class="forecast-temp">28°</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="S2">
+        <div class="S2picture">
+            <img src="assests\section2pic.svg" alt="Section 2 Picture">
+        </div>
+
+        <div class="S2text">
+            <h3>Know your weather, don't assume it</h3>
+            <p> Get comprehensive <b style="font-weight: 600;"> weather forecasts </b> covering <br>
+                your city and destinations worldwide 
+            </p>
+
+            <button class="S2btn">See More</button>
+
+        </div>
+    </section>
+    
+    <section class="S3" id="news-section">
+        <div class="S3text">
+            <h1>WeatherWise<small style="font-size: 25px; font-weight: 500;">.news</small></h1>
+            <br>
+            <p>
+                Your guide to weather: Accurate forecasts, storm 
+                <br>warnings, tips for preparing and more.
+            </p>
+        </div>
+
+        <div class="S3-content">
+
+                <h2 class="news-title">LASTEST NEWS <span class="line"></span></h2>
+                <div class="news-content">
+                  <div class="main-news">
+                    <img src="assests/wildfire.png" alt="Wildfire Smoke" class="main-news-img">
+                    <a href="#" target="_blank" class="main-news-link"><h3>Wildfire Smoke Alert</h3></a>
+                    <p>Canadian wildfire smoke from out-of-control blazes in Manitoba is drifting into the United States, which could affect air quality in northern regions.</p>
+                  </div>
+                  <div class="side-news">
+                    <div class="side-news-item">
+                      <img src="assests/wave.png" alt="Heat Wave" class="side-news-img">
+                      <div class="side-news-text">
+                        <a href="#" target="_blank" class="side-news-link"><h4>Heat Wave & Temperature Records</h4></a>
+                        <p>The Washington D.C. area is experiencing its first 90-degree high of the year today, with even hotter expected tomorrow before temperatures moderate this weekend.</p>
+                      </div>
+                    </div>
+                    <div class="side-news-item">
+                      <img src="assests/threats.png" alt="Storm Threats" class="side-news-img">
+                      <div class="side-news-text">
+                        <a href="#" target="_blank" class="side-news-link"><h4>Storm Threats</h4></a>
+                        <p>Today's main weather threats include heavy downpours, frequent lightning, and gusty winds, with strong/severe storms reaching the low/mid 80s before storms cool things down.</p>
+                      </div>
+                    </div>
+                    <div class="side-news-item">
+                      <img src="assests/flooding.png" alt="Flooding" class="side-news-img">
+                      <div class="side-news-text">
+                        <a href="#" target="_blank" class="side-news-link"><h4>Severe Storms & Flooding</h4></a>
+                        <p>Strong storms are moving through San Antonio, Texas, with heavy rainfall causing flash flooding conditions because most of Texas accumulated little rainfall since winter. More severe weather is likely, concentrated along and north of the southern branch as the main Mississippi River valley through Friday.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a href="news.html" class="explore-more-btn">Explore More</a>
+        </div>
+    </section>
+</div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+          <img src="assests\logo2.svg" alt="Cloud Logo" class="footer-logo">
+          <div class="footer-icons">
+            <a href="https://www.linkedin.com/in/ichrak-aiboud" target="_blank" >
+              <img src="assests\icon-logo.svg" alt="LinkedIn" class="footer-icon">
+            </a>
+            <a href="https://github.com/aiboud-iney" target="_blank">
+              <img src="assests/github.svg" alt="GitHub" class="footer-icon">
+            </a>
+          </div>
+          <div class="footer-credit">
+            Website developed by Aiboud Ichrak Nour El Yakine
+          </div>
+        </div>
+      </footer>
+     
+          
+    
+<script src="script.js"></script>
+</body>
+
+</html>
