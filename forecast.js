@@ -38,7 +38,7 @@ function setWeatherIcon(main, isMainCard = false, forecastTime = null) {
     
     if (main.includes('clear')) {
         if (isMainCard) {
-            return isNight ? 'assests/moon-white.png' : 'assests/sunny-white.png';
+                    return isNight ? 'assests/moon-white.png' : 'assests/sunny-white.png';
         } else {
             return isNight ? 'assests/moon-colour.png' : 'assests/sunny-colour.png';
         }
@@ -277,18 +277,16 @@ function updateForecastCards(forecastList) {
         const todayForecasts = dailyForecasts[todayKey];
         console.log('Today forecasts available:', todayForecasts.length);
         
-        // Get forecasts at specific hours (9, 12, 15, 18, 21) or closest available
-        const targetHours = [9, 12, 15, 18, 21];
-        targetHours.forEach(targetHour => {
-            const closestForecast = todayForecasts.find(f => {
-                const hour = new Date(f.dt * 1000).getHours();
-                return hour === targetHour;
-            }) || todayForecasts[0];
-            if (closestForecast) {
-                window.todayForecasts.push(closestForecast);
-            }
-        });
+        // Sort forecasts by time
+        todayForecasts.sort((a, b) => a.dt - b.dt);
         
+        // Take 5 evenly distributed forecasts from today's data
+        const step = Math.max(1, Math.floor(todayForecasts.length / 5));
+        for (let i = 0; i < 5 && i * step < todayForecasts.length; i++) {
+            window.todayForecasts.push(todayForecasts[i * step]);
+        }
+        
+        // If we still don't have 5 forecasts, add remaining ones
         while (window.todayForecasts.length < 5 && todayForecasts.length > window.todayForecasts.length) {
             const remainingForecasts = todayForecasts.filter(f => 
                 !window.todayForecasts.some(tf => tf.dt === f.dt)
@@ -299,11 +297,24 @@ function updateForecastCards(forecastList) {
                 break;
             }
         }
+        
+        // Sort by time to ensure chronological order
+        window.todayForecasts.sort((a, b) => a.dt - b.dt);
+        
+        console.log('Selected today forecasts with times:', window.todayForecasts.map(f => {
+            const date = new Date(f.dt * 1000);
+            return `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+        }));
     } else {
         const firstDay = uniqueDays[0];
         if (firstDay && dailyForecasts[firstDay]) {
             console.log('No today data, using first available day:', firstDay);
-            window.todayForecasts = dailyForecasts[firstDay].slice(0, 5);
+            const dayForecasts = dailyForecasts[firstDay];
+            // Take 5 evenly distributed forecasts from the available data
+            const step = Math.max(1, Math.floor(dayForecasts.length / 5));
+            for (let i = 0; i < 5 && i * step < dayForecasts.length; i++) {
+                window.todayForecasts.push(dayForecasts[i * step]);
+            }
         }
     }
     
@@ -311,7 +322,12 @@ function updateForecastCards(forecastList) {
         const firstDay = uniqueDays[0];
         if (dailyForecasts[firstDay]) {
             console.log('No today forecasts found, using first day data');
-            window.todayForecasts = dailyForecasts[firstDay].slice(0, 5);
+            const dayForecasts = dailyForecasts[firstDay];
+            // Take 5 evenly distributed forecasts from the available data
+            const step = Math.max(1, Math.floor(dayForecasts.length / 5));
+            for (let i = 0; i < 5 && i * step < dayForecasts.length; i++) {
+                window.todayForecasts.push(dayForecasts[i * step]);
+            }
         }
     }
     
