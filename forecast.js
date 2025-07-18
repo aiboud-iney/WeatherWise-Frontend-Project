@@ -280,13 +280,11 @@ function updateForecastCards(forecastList) {
         // Sort forecasts by time
         todayForecasts.sort((a, b) => a.dt - b.dt);
         
-        // Take 5 evenly distributed forecasts from today's data
         const step = Math.max(1, Math.floor(todayForecasts.length / 5));
         for (let i = 0; i < 5 && i * step < todayForecasts.length; i++) {
             window.todayForecasts.push(todayForecasts[i * step]);
         }
         
-        // If we still don't have 5 forecasts, add remaining ones
         while (window.todayForecasts.length < 5 && todayForecasts.length > window.todayForecasts.length) {
             const remainingForecasts = todayForecasts.filter(f => 
                 !window.todayForecasts.some(tf => tf.dt === f.dt)
@@ -310,7 +308,6 @@ function updateForecastCards(forecastList) {
         if (firstDay && dailyForecasts[firstDay]) {
             console.log('No today data, using first available day:', firstDay);
             const dayForecasts = dailyForecasts[firstDay];
-            // Take 5 evenly distributed forecasts from the available data
             const step = Math.max(1, Math.floor(dayForecasts.length / 5));
             for (let i = 0; i < 5 && i * step < dayForecasts.length; i++) {
                 window.todayForecasts.push(dayForecasts[i * step]);
@@ -323,7 +320,6 @@ function updateForecastCards(forecastList) {
         if (dailyForecasts[firstDay]) {
             console.log('No today forecasts found, using first day data');
             const dayForecasts = dailyForecasts[firstDay];
-            // Take 5 evenly distributed forecasts from the available data
             const step = Math.max(1, Math.floor(dayForecasts.length / 5));
             for (let i = 0; i < 5 && i * step < dayForecasts.length; i++) {
                 window.todayForecasts.push(dayForecasts[i * step]);
